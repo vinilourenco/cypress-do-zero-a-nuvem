@@ -1,28 +1,9 @@
-# 🌲 Cypress, do Zero à Nuvem ☁️
+# Cypress, from Zero to the Cloud
 
-👋 Seja bem-vindo(a)!
+Sample project for the "Cypress, from Zero to Cloud" course of the Talking About Testing online school.
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai amar esse curso. ❤️
+## Pre-requirements
 
-## O que você vai aprender?
+It is required to have git, Node.js and npm installed to clone and run this project.
 
-- Como configurar um projeto Cypress do zero
-- Como visitar páginas locais e remotas
-- Como lidar com os elementos mais comuns encontrados em aplicações web
-- Como testar upload de arquivos
-- Como realizar as mais diversas verificações de resultados esperados
-- Como criar comandos customizados
-- Como lidar com links que abrem em outra aba do navegador
-- Como rodar testes simulando as dimensões de um dispositivo móvel
-- Como resolver os mesmos problemas de diferentes formas, conhecendo a [API do Cypress](https://docs.cypress.io/api/table-of-contents)
-- Como criar uma documentação mínima para seu projeto de testes automatizados
-- Como executar os testes em um _workflow_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
-- Como integrar seu _workflow_ de integração contínua com o Cypress Cloud (o serviço de gestão de testes do Cypress na nuvem)
-
-## Vamos começar?
-
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
-
-___
-
-Este é um curso da **Escola Talking About Testing**.
+> I've used versions **2.53.0**, **v22.22.2** and **10.9.7** of git, Node.js and npm, respectively. I suggest you use the same or later LTS versions.
