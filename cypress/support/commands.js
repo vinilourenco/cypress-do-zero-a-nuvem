@@ -54,6 +54,7 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmitWithoutArgument', () => {
 // ERROR COMMANDS ---
 
 Cypress.Commands.add('fillMandatoryFieldsAndSubmitWithoutMandatoryTelephone', () => {
+    cy.clock()
     cy.get('input[name="firstName"]').type('Vinicius')
     cy.get('input[name="lastName"]').type('Lourenço')
     cy.get('input[type="email"]').type('vini@gmail.com')
@@ -62,4 +63,6 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmitWithoutMandatoryTelephone', ()
     cy.get('.button[type="submit"]').click()
 
     cy.get('.error').should('be.visible')
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
 })

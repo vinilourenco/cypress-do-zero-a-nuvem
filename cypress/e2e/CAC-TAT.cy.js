@@ -27,6 +27,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
   })
 
   it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', () => {
+    cy.clock()
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
     cy.get('input[type="email"]').type('vini@')
@@ -34,6 +35,8 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.contains('button', 'Enviar').click()
 
     cy.get('.error').should('be.visible')
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
   })
 
   it('verifica campo vazio ao digitar valor não-numérico no campo telefone', () => {
@@ -43,6 +46,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
   })
 
   it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
+    cy.clock()
     cy.get('input[id="phone-checkbox"]').click()
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
@@ -51,6 +55,8 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.contains('button', 'Enviar').click()
 
     cy.get('.error').should('be.visible')
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
   })
 
   it('preenche e limpa os campos nome, sobrenome, email e telefone', () => {
@@ -68,9 +74,12 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
   })
 
   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', () => {
+    cy.clock()
     cy.contains('button', 'Enviar').click()
 
     cy.get('.error').should('be.visible')
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
   })
 
   it('envia o formuário com sucesso usando um comando customizado', () => { // Custom command com argumento
