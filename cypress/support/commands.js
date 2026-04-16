@@ -32,6 +32,7 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmit', (user = {
     email: 'john.doe@example.com', 
     comment: 'This is a test comment.'
 }) => {
+    cy.clock()
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
     cy.get('input[type="email"]').type(user.email)
@@ -39,9 +40,12 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmit', (user = {
     cy.get('.button[type="submit"]').click()
 
     cy.get('.success').should('be.visible')
+    cy.tick(3000)
+    cy.get('.success').should('not.be.visible')
 })
 
 Cypress.Commands.add('fillMandatoryFieldsAndSubmitWithoutArgument', () => {
+    cy.clock()
     cy.get('input[name="firstName"]').type('Vinicius')
     cy.get('input[name="lastName"]').type('Lourenço')
     cy.get('input[type="email"]').type('vini@gmail.com')
@@ -49,6 +53,8 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmitWithoutArgument', () => {
     cy.get('.button[type="submit"]').click()
 
     cy.get('.success').should('be.visible')
+    cy.tick(3000)
+    cy.get('.success').should('not.be.visible')
 })
 
 // ERROR COMMANDS ---
