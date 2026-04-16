@@ -21,7 +21,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
     cy.get('input[type="email"]').type(user.email)
-    cy.get('textarea[id="open-text-area"]').type(longText, {delay: 0})
+    cy.get('textarea[id="open-text-area"]').type(longText)
     cy.contains('button', 'Enviar').click()
 
     cy.get('.success').should('be.visible')
@@ -34,7 +34,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
     cy.get('input[type="email"]').type('vini@')
-    cy.get('textarea[id="open-text-area"]').type(user.comment, {delay:100})
+    cy.get('textarea[id="open-text-area"]').type(user.comment)
     cy.contains('button', 'Enviar').click()
 
     cy.get('.error').should('be.visible')
@@ -43,7 +43,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
   })
 
   it('verifica campo vazio ao digitar valor não-numérico no campo telefone', () => {
-    cy.get('input[type="number"]').type('abc', {delay:100})
+    cy.get('input[type="number"]').type('abc')
 
     cy.get('input[type="number"]').should('have.value', '')
   })
@@ -54,7 +54,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
     cy.get('input[type="email"]').type(user.email)
-    cy.get('textarea[id="open-text-area"]').type(user.comment, {delay:100})
+    cy.get('textarea[id="open-text-area"]').type(user.comment)
     cy.contains('button', 'Enviar').click()
 
     cy.get('.error').should('be.visible')
