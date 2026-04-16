@@ -21,11 +21,11 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
     cy.get('input[type="email"]').type(user.email)
-    cy.get('textarea[id="open-text-area"]').type(longText)
+    cy.get('textarea[id="open-text-area"]').invoke('val', longText).should('have.value', longText)
     cy.contains('button', 'Enviar').click()
 
     cy.get('.success').should('be.visible')
-    cy.tick()
+    cy.tick(3000)
     cy.get('.success').should('not.be.visible')
   })
 
@@ -34,7 +34,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
     cy.get('input[type="email"]').type('vini@')
-    cy.get('textarea[id="open-text-area"]').type(user.comment)
+    cy.get('textarea[id="open-text-area"]').invoke('val', user.comment).should('have.value', user.comment)
     cy.contains('button', 'Enviar').click()
 
     cy.get('.error').should('be.visible')
@@ -54,7 +54,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
     cy.get('input[type="email"]').type(user.email)
-    cy.get('textarea[id="open-text-area"]').type(user.comment)
+    cy.get('textarea[id="open-text-area"]').invoke('val', user.comment).should('have.value', user.comment)
     cy.contains('button', 'Enviar').click()
 
     cy.get('.error').should('be.visible')
@@ -67,7 +67,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.get('input[name="lastName"]').type(user.lastName).should('have.value', 'Lourenço')
     cy.get('input[type="email"]').type(user.email).should('have.value', 'vini@gmail.com')
     cy.get('input[type="number"]').type(user.phone).should('have.value', '19997293051')
-    cy.get('textarea[id="open-text-area"]').type(user.comment).should('have.value', 'Obrigado!')
+    cy.get('textarea[id="open-text-area"]').invoke('val', user.comment).should('have.value', 'Obrigado!')
 
     cy.get('input[name="firstName"]').clear().should('have.value', '')
     cy.get('input[name="lastName"]').clear().should('have.value', '')

@@ -36,7 +36,7 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmit', (user = {
     cy.get('input[name="firstName"]').type(user.firstName)
     cy.get('input[name="lastName"]').type(user.lastName)
     cy.get('input[type="email"]').type(user.email)
-    cy.get('textarea[id="open-text-area"]').type(user.comment, {delay:100})
+    cy.get('textarea[id="open-text-area"]').invoke('val', user.comment).should('have.value', user.comment)
     cy.get('.button[type="submit"]').click()
 
     cy.get('.success').should('be.visible')
@@ -49,7 +49,7 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmitWithoutArgument', () => {
     cy.get('input[name="firstName"]').type('Vinicius')
     cy.get('input[name="lastName"]').type('Lourenço')
     cy.get('input[type="email"]').type('vini@gmail.com')
-    cy.get('textarea[id="open-text-area"]').type('Obrigado!', {delay:100})
+    cy.get('textarea[id="open-text-area"]').invoke('val', 'Obrigado!').should('have.value', 'Obrigado!')
     cy.get('.button[type="submit"]').click()
 
     cy.get('.success').should('be.visible')
@@ -64,7 +64,7 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmitWithoutMandatoryTelephone', ()
     cy.get('input[name="firstName"]').type('Vinicius')
     cy.get('input[name="lastName"]').type('Lourenço')
     cy.get('input[type="email"]').type('vini@gmail.com')
-    cy.get('textarea[id="open-text-area"]').type('Obrigado!', {delay:100})
+    cy.get('textarea[id="open-text-area"]').invoke('val', 'Obrigado!').should('have.value', 'Obrigado!')
     cy.get('input[type="checkbox"][value="phone"').check().should('be.checked')
     cy.get('.button[type="submit"]').click()
 
