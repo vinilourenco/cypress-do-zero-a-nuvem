@@ -183,4 +183,28 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.contains('h1', 'CAC TAT - Política de Privacidade')
       .should('be.visible')
   })
+
+  it('exibe e oculta as mensagens de sucesso e erro usando .invoke()', () => {
+    cy.get('.success')
+      .should('not.be.visible')
+      .invoke('show')
+      .should('be.visible')
+      .and('contain', 'Mensagem enviada com sucesso.')
+      .invoke('hide')
+      .should('not.be.visible')
+
+      cy.get('.error')
+      .should('not.be.visible')
+      .invoke('show')
+      .should('be.visible')
+      .and('contain', 'Valide os campos obrigatórios!')
+      .invoke('hide')
+      .should('not.be.visible')
+  })
+
+  it.only('preenche o campo da área de texto usando o comando invoke', () => {
+    cy.get('textarea[id="open-text-area"]')
+      .invoke('val', 'Olá, mundo!')
+      .should('have.value', 'Olá, mundo!')
+  })
 })
