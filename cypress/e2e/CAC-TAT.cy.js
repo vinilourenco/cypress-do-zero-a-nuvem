@@ -202,7 +202,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
       .should('not.be.visible')
   })
 
-  it.only('preenche o campo da área de texto usando o comando invoke', () => {
+  it('preenche o campo da área de texto usando o comando invoke', () => {
     cy.get('textarea[id="open-text-area"]')
       .invoke('val', 'Olá, mundo!')
       .should('have.value', 'Olá, mundo!')
