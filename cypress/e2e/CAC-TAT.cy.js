@@ -15,18 +15,20 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')
   })
 
-  it('preenche os campos obrigatórios e envia o formulário', () => {
-    cy.clock()
-    const longText = Cypress._.repeat('abcdefghijklmnopqrstuvwxyz', 10)
-    cy.get('input[name="firstName"]').type(user.firstName)
-    cy.get('input[name="lastName"]').type(user.lastName)
-    cy.get('input[type="email"]').type(user.email)
-    cy.get('textarea[id="open-text-area"]').invoke('val', longText).should('have.value', longText)
-    cy.contains('button', 'Enviar').click()
+  Cypress._.times(5, () => {
+    it('preenche os campos obrigatórios e envia o formulário', () => {
+      cy.clock()
+      const longText = Cypress._.repeat('abcdefghijklmnopqrstuvwxyz', 10)
+      cy.get('input[name="firstName"]').type(user.firstName)
+      cy.get('input[name="lastName"]').type(user.lastName)
+      cy.get('input[type="email"]').type(user.email)
+      cy.get('textarea[id="open-text-area"]').invoke('val', longText).should('have.value', longText)
+      cy.contains('button', 'Enviar').click()
 
-    cy.get('.success').should('be.visible')
-    cy.tick(3000)
-    cy.get('.success').should('not.be.visible')
+      cy.get('.success').should('be.visible')
+      cy.tick(3000)
+      cy.get('.success').should('not.be.visible')
+    })
   })
 
   it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', () => {
@@ -101,8 +103,8 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
 
   it('seleciona um produto (Mentoria) por seu valor (value)', () => {
     cy.get('#product')
-    .select('mentoria')
-    .should('have.value', 'mentoria')
+      .select('mentoria')
+      .should('have.value', 'mentoria')
   })
 
   it('seleciona um produto (Blog) por seu índice', () => {
@@ -177,7 +179,7 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     cy.contains('a', 'Política de Privacidade')
       .invoke('removeAttr', 'target')
       .click()
-    
+
     cy.contains('h1', 'CAC TAT - Política de Privacidade')
       .should('be.visible')
   })
