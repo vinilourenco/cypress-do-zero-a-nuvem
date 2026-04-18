@@ -219,10 +219,14 @@ describe('Central de Atendimento ao Cliente TAT', () => { // describe: Define a 
     })
   })
 
-  it.only('encontrando o gato escondido', () => {
+  it('encontrando o gato escondido', () => {
     cy.get('span[id="cat"]')
       .invoke('show')
     cy.get('#cat')
       .should('be.visible')
+    cy.get('#title')
+      .invoke('text', 'CAT TAT')
+    cy.get('#subtitle')
+      .invoke('text', 'Eu ❤️ gatos!')
   })
 })
